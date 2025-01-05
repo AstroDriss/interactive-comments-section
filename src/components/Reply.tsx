@@ -27,8 +27,9 @@ const Reply = ({
 
     createComment(content, parentID, replyingTo!);
 
-    setReplyingTo!(undefined);
-    textareaRef.current!.value = "";
+    if (parentID) setReplyingTo!(undefined);
+
+    textareaRef.current.value = "";
   };
 
   return (
