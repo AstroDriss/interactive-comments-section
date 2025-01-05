@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { CommentType, Comments } from "../context/CommentsContextProvider";
 import Reply from "./Reply";
+import useScore from "../hooks/useScore";
 
 interface Props {
   comment: CommentType;
@@ -12,6 +13,7 @@ const CommentContent = ({ comment, parentID }: Props) => {
   const [editing, setEditing] = useState<number | null>(null);
   const [replyingTo, setReplyingTo] = useState<string | undefined>(undefined);
   const editInputRef = useRef<HTMLTextAreaElement>(null);
+  const { score, upvote, downvote } = useScore(comment.score);
 
   const isUserComment = currentUser?.username === comment.user.username;
 
@@ -36,8 +38,12 @@ const CommentContent = ({ comment, parentID }: Props) => {
       <div className="grid grid-rows-[auto_auto] items-start grid-cols-[auto_1fr_auto] gap-4 p-4 bg-white rounded-lg">
         <div className="grid items-center row-span-2 rounded-xl justify-items-center bg-veryLightGray">
           <button
-            className="p-3 text-lightGrayishBlue hover:text-moderateBlue"
+            className={`${
+              score > comment.score ? "text-moderateBlue" : ""
+            } p-3 text-lightGrayishBlue hover:text-moderateBlue`}
             aria-label="upvote comment"
+            title="upvote comment"
+            onClick={upvote}
           >
             <svg
               aria-hidden
@@ -51,10 +57,14 @@ const CommentContent = ({ comment, parentID }: Props) => {
               />
             </svg>
           </button>
-          <span className="font-bold text-moderateBlue">{comment.score}</span>
+          <span className="font-bold text-moderateBlue">{score}</span>
           <button
-            className="p-3 text-lightGrayishBlue hover:text-moderateBlue"
+            className={`${
+              score < comment.score ? "text-moderateBlue" : ""
+            } p-3 text-lightGrayishBlue hover:text-moderateBlue`}
             aria-label="downvote comment"
+            title="downvote comment"
+            onClick={downvote}
           >
             <svg
               aria-hidden
