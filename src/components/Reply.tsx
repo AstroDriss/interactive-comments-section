@@ -3,7 +3,7 @@ import { Comments } from "../context/CommentsContextProvider";
 
 interface Props {
   variant?: "post" | "reply";
-  parentID: number;
+  parentID?: number;
   replyingTo?: string;
   setReplyingTo?: (value: undefined | string) => void;
 }
@@ -19,6 +19,7 @@ const Reply = ({
 
   const postComment = () => {
     if (!textareaRef.current) return;
+
     const content = textareaRef.current?.value
       .replace(`@${replyingTo}`, "")
       .trim();
@@ -38,9 +39,9 @@ const Reply = ({
         <div
           className={`${
             variant === "post" ? "grid" : replyingTo ? "grid" : "hidden"
-          } gap-4 grid-cols-[auto_1fr_auto] items-start bg-white p-5 rounded-xl`}
+          } gap-3 md:gap-5 [grid-template-areas:"textarea_textarea""profile_button"] md:[grid-template-areas:"profile_textarea_button"] md:grid-cols-[auto_1fr_auto] items-start bg-white py-5 px-4 md:px-6 rounded-xl`}
         >
-          <picture className="w-9">
+          <picture className="w-10 self-center md:self-start [grid-area:profile]">
             <source srcSet={currentUser?.image.webp} type="image/webp" />
 
             <img
@@ -54,12 +55,13 @@ const Reply = ({
             ref={textareaRef}
             rows={3}
             autoFocus
-            className="p-4 border resize-none border-grayishBlue focus:outline-none focus:border-moderateBlue rounded-xl"
+            className="p-4 [grid-area:textarea] border resize-none border-grayishBlue focus:outline-none focus:border-moderateBlue rounded-xl"
             defaultValue={replyingTo ? `@${replyingTo} ` : ""}
           ></textarea>
+
           <button
             onClick={postComment}
-            className="px-4 py-2 text-white bg-moderateBlue hover:bg-lightGrayishBlue rounded-xl"
+            className="px-8 w-fit ml-auto [grid-area:button] py-3 text-white bg-moderateBlue hover:bg-lightGrayishBlue rounded-xl"
           >
             {variant === "post" ? "SEND" : "REPLY"}
           </button>

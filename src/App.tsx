@@ -5,7 +5,7 @@ import ConfirmContextProvider from "./context/ConfirmContextProvider";
 
 function App() {
   return (
-    <main className="min-h-full bg-veryLightGray">
+    <main className="min-h-full">
       <ConfirmContextProvider>
         <CommentsContextProvider>
           <Comments />

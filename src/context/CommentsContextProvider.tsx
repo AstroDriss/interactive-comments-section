@@ -9,7 +9,7 @@ interface User {
   username: string;
 }
 
-interface CommentTypeForReplies {
+export interface CommentTypeForReplies {
   id: number;
   content: string;
   createdAt: string;

@@ -7,7 +7,7 @@ export const Comments = () => {
   const { comments } = useContext(CommentsContext)!;
 
   return (
-    <section className="max-w-[45.5rem] mx-auto font-rubik grid gap-4">
+    <section className="max-w-[45.5rem] md:p-0 p-4 mx-auto font-rubik grid gap-4">
       {comments?.map((comment) => (
         <Comment key={comment.id} comment={comment} />
       ))}

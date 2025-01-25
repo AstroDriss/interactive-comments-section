@@ -12,11 +12,11 @@ const ConfirmDialog = () => {
 
   return (
     <dialog
-      className="max-w-[360px] p-5 rounded-md backdrop:bg-black/20"
+      className="max-w-[360px] p-6 rounded-md backdrop:bg-black/30 mx-3"
       onClose={onCancel}
       ref={dialogRef}
     >
-      <h2 className="mb-1 text-lg font-bold text-grayishBlue">
+      <h2 className="mb-1 text-xl font-bold text-grayishBlue">
         Delete Comment
       </h2>
       <p className="text-grayishBlue">

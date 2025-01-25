@@ -29,3 +29,31 @@
     }
   }
 }
+
+.comment {
+  grid-template-areas: "info info" "content content" "vote options";
+}
+
+@media (width >= theme("screens.md")) {
+  .comment {
+    grid-template-areas:
+      "vote info options"
+      "vote content content";
+  }
+}
+
+.options {
+  grid-area: options;
+}
+
+.content {
+  grid-area: content;
+}
+
+.vote {
+  grid-area: vote;
+}
+
+.info {
+  grid-area: info;
+}
