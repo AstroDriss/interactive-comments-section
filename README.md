@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://www.frontendmentor.io/solutions/interactive-comments-section-reactjs-tailwindcss-MnqHlnrTQ3]()
-- Live Site URL: [https://interactive-comments-section-nu-lilac.vercel.app/]()
+- Solution URL: [here](https://www.frontendmentor.io/solutions/interactive-comments-section-reactjs-tailwindcss-MnqHlnrTQ3)
+- Live Site URL: [here](https://interactive-comments-section-nu-lilac.vercel.app/)
 
 ## My process
 
